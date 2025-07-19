@@ -3,9 +3,7 @@ import React, { useState } from "react";
 export default function Login() {
     const [eye,setEye]=useState(false)
 
-    const handleEye=()=>{
-        setEye(prev=>!prev)
-    }
+   
   return (
     <div className="relative">
       <div className="absolute z-[-2] ">
@@ -31,12 +29,15 @@ export default function Login() {
             <div className="w-full">
               <div className="password flex items-center justify-between border border-[#018B67] rounded-[8px] px-4 py-3 w-full">
                 <input
-                  className="outline-none font-normal  text-base  text-[#3C2F2F80] max-[390px]:w-[50%]"
-                  type="text"
+                  className="outline-none w-full font-normal  text-base  text-[#3C2F2F80] max-[390px]:w-[50%]"
+                  type= {eye?"text":"password"}
                   placeholder="Password"
+
+                 
                 />
-                <div className="w-[20px]">
-                  <img className="w-[20px]" src="/svg/closedEye.svg" alt="" />
+                <div  onClick={() => setEye(prev => !prev)} className="w-[20px]">
+
+                  <img className="w-[20px]" src={eye? "/svg/openEye.svg" :"/svg/closedEye.svg"} alt="" />
                 </div>
               </div>
               <p className="font-normal mt-2 text-[#464545] font-normal leading-[20px] tracking-[-2%] text-sm text-end  ">
