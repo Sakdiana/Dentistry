@@ -6,13 +6,17 @@ import Aside from "../components/Aside";
 export default function Layout() {
   return (
     <>
-      <Header />
-      <div className="container flex items-center justify-between ">
-        <div className="mt-8">
+      <div className="mb-8">
+        <Header />
+      </div>
+      <div className="container flex items-center  center gap-8  ">
+        <div className="">
         <Aside />
         </div>
 
-        <Outlet />
+       <div className="">
+         <Outlet />
+       </div>
       </div>
 
       
