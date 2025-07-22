@@ -11,7 +11,7 @@ export default function Aside() {
     const base = " group transition-colors rounded-[8px]";
     const active = "bg-[#D5F2EB] text-[#018B67]";
     const inactive =
-      "hover:bg-[#D5F2EB] hover:text-[#018B67] text-[#464545] group";
+      " hover:text-[#018B67] text-[#464545] group";
 
     return `${base} ${isActive ? active : inactive}`;
   };
