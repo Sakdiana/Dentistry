@@ -1,5 +1,6 @@
 import React from "react";
 import Btn from "./Btn";
+import { Link } from "react-router-dom";
 
 export default function ClientCard() {
   return (
@@ -36,7 +37,7 @@ export default function ClientCard() {
         <p className="font-medium text-sm leading-[20px] text-[#2B3A58]">View treatment history</p>
       </div>
 
-      <div className="btn mt-4">
+      <div  className="btn mt-4">
        <Btn text="Open" padding="8px 47px"/>
       </div>
     </div>

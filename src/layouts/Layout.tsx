@@ -9,7 +9,7 @@ export default function Layout() {
       <div className="mb-8">
         <Header />
       </div>
-      <div className="container flex items-start  center gap-8  ">
+      <div className="container flex items-start   gap-8  ">
         <div className="">
         <Aside />
         </div>

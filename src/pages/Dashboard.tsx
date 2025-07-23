@@ -1,5 +1,6 @@
 import React from 'react'
 import ClientCard from '../components/ClientCard'
+import Btn from '../components/Btn'
 
 export default function Dashboard() {
   return (
@@ -20,6 +21,7 @@ export default function Dashboard() {
 
             <ClientCard/>
         </div>
+
     </div>
   )
 }

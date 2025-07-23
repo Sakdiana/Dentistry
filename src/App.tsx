@@ -12,6 +12,7 @@ import Reservation from "./pages/Reservation";
 import Posts from "./pages/Posts";
 import Income from "./pages/Income";
 import Help from "./pages/Help";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
@@ -28,11 +29,14 @@ function App() {
         <Route path="/reservation" element={<Reservation />} />
         <Route path="/income" element={<Income />} />
         <Route path="/help" element={<Help />} />
+        
+
 
 
        
         
       </Route>
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
 
   );
