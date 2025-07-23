@@ -13,8 +13,12 @@ export default function Dashboard() {
           Today’s clients
         </h1>
 
-        <div className="allClients">
+        <div className="allClients mt-8 flex items-center gap-6">
           <ClientCard/>
+
+           <ClientCard/>
+
+            <ClientCard/>
         </div>
     </div>
   )
