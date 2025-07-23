@@ -5,6 +5,7 @@
   list-style: none;
   box-sizing: border-box;
   font-family: "Nunito", sans-serif;
+  transition: all .3s linear .2s;
 }
 
 body {

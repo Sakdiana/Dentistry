@@ -9,7 +9,7 @@ export default function NotFoundPage() {
   return (
     <div className="">
      
-        <div onClick={()=>{navigate(-1)}} className="mx-12 mt-12  w-[32px] h-[32px] rotate-180  rounded-xl ">
+        <div onClick={()=>{navigate(-1)}} className="mx-[20px] mt-[20px]  w-[32px] h-[32px] rotate-180  rounded-xl ">
           <svg
             width="32"
             height="32"

@@ -9,7 +9,6 @@ import Aside from "./components/Aside";
 import Dashboard from "./pages/Dashboard";
 import MyPatients from "./pages/MyPatients";
 import Reservation from "./pages/Reservation";
-import Posts from "./pages/Posts";
 import Income from "./pages/Income";
 import Help from "./pages/Help";
 import NotFoundPage from "./pages/NotFoundPage";
@@ -19,18 +18,17 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
 
-        <Route path="/auth" element={<Auth />} />
-        <Route path="/login" element={<Login />} />
+       
 
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route index element={<Dashboard />} />
         <Route path="/mypatients" element={<MyPatients />} />
-        <Route path="/posts" element={<Posts />} />
 
         <Route path="/reservation" element={<Reservation />} />
         <Route path="/income" element={<Income />} />
         <Route path="/help" element={<Help />} />
         
-
+ <Route path="/auth" element={<Auth />} />
+        <Route path="/login" element={<Login />} />
 
 
        

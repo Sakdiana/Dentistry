@@ -2,7 +2,7 @@ import React from "react";
 
 export default function SearchInput() {
   return (
-    <div  className="max-w-[401px] w-full px-8 py-4 flex items-center gap-5 bg-[#EBEBEB66] rounded-[50px] ">
+    <div  className="max-w-[401px] w-full px-8 py-4 flex items-center gap-5 bg-[#EBEBEB66] rounded-[50px] max-[680px]:max-w-[300px] max-[615px]:px-4 max-[615px]:py-2">
       <div className="search__svg">
         <svg
           width="24"
@@ -18,7 +18,7 @@ export default function SearchInput() {
         </svg>
       </div>
 
-      <input className="w-full outline-none" type="text" placeholder="Search" />
+      <input className="w-full outline-none max-[510px]:text-sm" type="text" placeholder="Search" />
     </div>
   );
 }
