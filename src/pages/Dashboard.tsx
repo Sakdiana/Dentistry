@@ -4,7 +4,7 @@ import Btn from '../components/Btn'
 
 export default function Dashboard() {
   return (
-    <div className='max-w-[1011px] w-full mx-auto'>
+    <div className=''>
       <div className="greeting">
         <p className='font-normal text-sm leading-[20px] tracking-[-2%]'>Hello, Asanov Asan!</p>
        

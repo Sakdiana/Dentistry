@@ -18,7 +18,7 @@ export default function Aside() {
 
   return (
     <aside>
-      <div className="max-w-[208px] w-full p-6 bg-[#FFFFFF] rounded-[20px]">
+      <div className="min-w-[208px] w-full p-6 bg-[#FFFFFF] rounded-[20px]">
         <div className="info__user flex items-center gap-3 mb-6">
           <div className="user__ava">
             <img src="/svg/userAva.svg" alt="" />

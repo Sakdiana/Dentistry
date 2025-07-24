@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <header>
       <div className="container">
-        <div className="bg-white py-5 px-6 rounded-3xl flex items-center justify-between gap-3 max-[510px]:flex-col">
+        <div className="bg-white py-5 px-6 rounded-3xl flex items-center justify-between gap-4 max-[510px]:flex-col">
           <Link to={"/"}>
             <div className="logo max-[470px]:w-20">
               <img src="/svg/logo.svg" alt="" />
