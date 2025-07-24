@@ -2,7 +2,11 @@ import React from "react";
 import SelectOption from "./SelectOption";
 import { NavLink } from "react-router-dom";
 
-export default function Aside() {
+interface AsideProps{
+  toggleAside:()=>void
+}
+
+export default function Aside({toggleAside}:AsideProps) {
   const getNavLinkClass: any = ({
     isActive,
   }: {
@@ -10,14 +14,28 @@ export default function Aside() {
   }): string => {
     const base = " group transition-colors rounded-[8px]";
     const active = "bg-[#D5F2EB] text-[#018B67]";
-    const inactive =
-      " hover:text-[#018B67] text-[#464545] group";
+    const inactive = " hover:text-[#018B67] text-[#464545] group";
 
     return `${base} ${isActive ? active : inactive}`;
   };
 
   return (
-    <aside>
+    <aside className="relative">
+      <div onClick={toggleAside} className="arrow p-3 w-[35px] mx-auto rounded-[8px] bg-[#FFFFFF] border border-[#F6F6F6] absolute right-[-20px] top-[15px]">
+        <svg
+          width="7"
+          height="12"
+          viewBox="0 0 7 12"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6.1416 1.42513C6.4528 1.09911 6.4528 0.570532 6.1416 0.244514C5.8304 -0.0815045 5.32585 -0.0815045 5.01465 0.244514L0.233399 5.25344C-0.0777998 5.57946 -0.0777998 6.10804 0.233399 6.43406L5.01465 11.443C5.32585 11.769 5.8304 11.769 6.1416 11.443C6.4528 11.117 6.4528 10.5884 6.1416 10.2624L1.92383 5.84375L6.1416 1.42513Z"
+            fill="black"
+          />
+        </svg>
+      </div>
+
       <div className="min-w-[208px] w-full p-6 bg-[#FFFFFF] rounded-[20px]">
         <div className="info__user flex items-center gap-3 mb-6">
           <div className="user__ava">
@@ -88,7 +106,6 @@ export default function Aside() {
                 <p className="font-normal text-sm">My patients</p>
               </div>
             </NavLink>
-
 
             <NavLink to={"/reservation"} className={getNavLinkClass}>
               <div className="flex items-center gap-3  px-3 py-[10px] rounded-[8px] w-full">
