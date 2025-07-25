@@ -24,7 +24,7 @@ export default function Layout() {
         </div>
 
         <div className={`transition-all duration-[0.7s] ease-in-out ${
-            isAsideOpen ? "w-[calc(100%-250px)]" : "w-full"
+            isAsideOpen ? "w-[calc(100%-250px)] mx-auto" : "w-full mx-auto px-6"
           }`}>
           <Outlet />
         </div>

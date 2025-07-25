@@ -3,10 +3,10 @@ import SearchInput from "../components/SearchInput";
 
 export default function MyPatients() {
   return (
-    <div className="">
+    <div className="w-full mx-auto">
       <SearchInput />
 
-      <table className="w-full mt-8 bg-[#FFFFFF] px-3 py-4 text-start max-w-[1011px]">
+      <table className="w-full mt-8 bg-[#FFFFFF] px-3 py-4 text-start max-w-[1011px] ">
         <tr className="border border-[#9090901A]">
           <th className="font-bold text-sm leding-[-2px] text-[#2B3A58] text-start px-2 py-4">Name</th>
           <th className="font-bold text-sm leding-[-2px] text-[#2B3A58] text-start px-2 py-4">Number</th>
