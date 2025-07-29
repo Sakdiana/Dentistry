@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 export default function ReservationHeader() {
   return (
@@ -57,14 +58,50 @@ export default function ReservationHeader() {
           </div>
         </div>
 
+        <div className="flex">
+          <NavLink
+            to="/reservation/year"
+            className={({ isActive }) =>
+             isActive ? "text-[#2B3A58]" : "text-[#BBBBBB]"
+            }
+          >
+            <button className="font-black text-xs leading-[20px]  py-[10px] pl-[20px] pr-[15px] border border-[#F5F6F7] rounded-l-[30px]">
+              Year
+            </button>
+          </NavLink>
 
-        <div className="">
-          <button className="font-black text-xs leading-[20px] text-[#6B7A9966] py-[10px] pl-[20px] pr-[15px] border border-[#F5F6F7] rounded-l-[30px]">Year</button>
-          <button className="font-black text-xs leading-[20px] text-[#6B7A9966] py-[10px] px-[15px] border border-[#F5F6F7]">Week</button>
-          <button className="font-black text-xs leading-[20px] text-[#6B7A9966] py-[10px] px-[15px] border border-[#F5F6F7]">Month</button>
-          <button className="font-black text-xs leading-[20px] text-[#6B7A9966] py-[10px] pl-[15px] pr-[20px] border border-[#F5F6F7]  rounded-r-[30px]  ">Day</button>
+          <NavLink
+            to="/reservation/week"
+            className={({ isActive }) =>
+              isActive ? "text-[#2B3A58]" : "text-[#BBBBBB]"
+            }
+          >
+            <button className="font-black text-xs leading-[20px]  py-[10px] px-[15px] border border-[#F5F6F7]">
+              Week
+            </button>
+          </NavLink>
 
+          <NavLink
+            to="/reservation/month"
+            className={({ isActive }) =>
+              isActive ? "text-[#2B3A58]" : "text-[#BBBBBB]"
+            }
+          >
+            <button className="font-black text-xs leading-[20px]  py-[10px] px-[15px] border border-[#F5F6F7]">
+              Month
+            </button>
+          </NavLink>
 
+          <NavLink
+            to="/reservation"  end 
+            className={({ isActive }) =>
+              isActive ? "text-[#2B3A58]" : "text-[#BBBBBB]"
+            }
+          >
+            <button className="font-black text-xs leading-[20px]  py-[10px] pl-[15px] pr-[20px] border border-[#F5F6F7]  rounded-r-[30px]  ">
+              Day
+            </button>
+          </NavLink>
         </div>
       </div>
     </header>
