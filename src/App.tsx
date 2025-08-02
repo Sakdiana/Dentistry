@@ -8,7 +8,11 @@ import MyPatients from "./pages/MyPatients";
 import Income from "./pages/Income";
 import Help from "./pages/Help";
 import NotFoundPage from "./pages/NotFoundPage";
-import ReservationDay from "./pages/Reservation";
+import ReservationLayout from "./layouts/ReservationLayout";
+import ReservationDay from "./pages/Reservation/ReservationDay";
+import ReservationMonth from "./pages/Reservation/ReservationMonth";
+import ReservationWeek from "./pages/Reservation/ReservationWeek";
+import ReservationYear from "./pages/Reservation/ReservationYear";
 
 function App() {
   return (
@@ -16,7 +20,14 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Dashboard />} />
         <Route path="/mypatients" element={<MyPatients />} />
-        <Route path="reservation" element={<ReservationDay />} />
+
+        <Route path="/reservation" element={<ReservationLayout />}>
+          <Route index element={<ReservationDay/>}/>
+          <Route path="/reservation/month" element={<ReservationMonth/>}/>
+          <Route path="/reservation/week" element={<ReservationWeek/>}/>
+          <Route path="/reservation/year" element={<ReservationYear/>}/>
+
+        </Route>
 
         <Route path="/income" element={<Income />} />
         <Route path="/help" element={<Help />} />
