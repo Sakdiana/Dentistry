@@ -1,4 +1,5 @@
 import React from "react";
+import ReservationClient from "../../components/ReservationClient";
 
 type Event = {
   time: string; // пример: "10:00"
@@ -44,6 +45,8 @@ export default function ReservationDay() {
               fill="#C3CAD9"
             />
           </svg>
+
+          <h2></h2>
         </div>
 
         {/* Время слева */}
@@ -70,10 +73,10 @@ export default function ReservationDay() {
             key={index}
             className={`absolute left-4 right-4 border rounded-md p-1 text-xs flex flex-col max-w-[125px] w-full ${
               event.color === "red"
-                ? "border-red-500 bg-red-50"
+                ? "border-red-500 bg-[#FF66330D]" 
                 : event.color === "yellow"
-                ? "border-yellow-500 bg-yellow-50"
-                : "border-green-500 bg-green-50"
+                ? "border-yellow-500 bg-[#F0B8150D]"
+                : "border-green-500 bg-[#29CC390D]"
             }`}
             style={{
               top: `${calcTop(event.time)}%`,
@@ -84,6 +87,8 @@ export default function ReservationDay() {
             <span>{event.title}</span>
           </div>
         ))}
+
+        <ReservationClient status="Will not come"/>
       </div>
     </div>
   );
