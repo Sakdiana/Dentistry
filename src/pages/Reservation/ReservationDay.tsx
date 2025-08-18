@@ -2,35 +2,32 @@ import React from "react";
 import ReservationClient from "../../components/ReservationClient";
 
 type Event = {
-  time: string; // пример: "10:00"
+  time: string;
   title: string;
-  color: "red" | "yellow" | "green";
 };
 
 const events: Event[] = [
-  { time: "10:00", title: "The Amazing Hubble", color: "red" },
-  { time: "10:30", title: "The Amazing Hubble", color: "yellow" },
-  { time: "11:00", title: "The Amazing Hubble", color: "green" },
-  { time: "20:00", title: "The Amazing Hubble", color: "green" },
+  { time: "10:00", title: "The Amazing Hubble" },
+  { time: "10:30", title: "The Amazing Hubble" },
+  { time: "11:00", title: "The Amazing Hubble" },
+  { time: "20:00", title: "The Amazing Hubble" },
 ];
 
-const hours = Array.from({ length: 12 }, (_, i) => 9 + i); // 9–20
-
-function calcTop(time: string) {
-  const startHour = 9;
-  const totalHours = 12; // 9-20
-  const [hour, minute] = time.split(":").map(Number);
-  const minutesFromStart = (hour - startHour) * 60 + minute;
-  return (minutesFromStart / (totalHours * 60)) * 100;
-}
+const hours = Array.from({ length: 12 }, (_, i) => 9 + i);
 
 export default function ReservationDay() {
+  // группируем события по часам
+  const groupedEvents: Record<number, Event[]> = {};
+  events.forEach((event) => {
+    const [h] = event.time.split(":").map(Number);
+    if (!groupedEvents[h]) groupedEvents[h] = [];
+    groupedEvents[h].push(event);
+  });
+
   return (
-    <div className="p-[18px] max-w-6xl w-full flex">
-      {/* Левая колонка времени */}
-      <div className="left w-[50px] flex flex-col items-center border-r border-[#F5F6F7]">
-        {/* Иконка */}
-        <div className="mb-2">
+    <div className="p-4 max-w-6xl w-full">
+      <div className="flex items-start gap-[25px] ">
+        <div className="svg">
           <svg
             width="30"
             height="30"
@@ -39,57 +36,47 @@ export default function ReservationDay() {
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              fillRule="evenodd"
-              clipRule="evenodd"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
               d="M14.99 5C9.47 5 5 9.48 5 15C5 20.52 9.47 25 14.99 25C20.52 25 25 20.52 25 15C25 9.48 20.52 5 14.99 5ZM15 23C10.58 23 7 19.42 7 15C7 10.58 10.58 7 15 7C19.42 7 23 10.58 23 15C23 19.42 19.42 23 15 23ZM14.78 10H14.72C14.32 10 14 10.32 14 10.72V15.44C14 15.79 14.18 16.12 14.49 16.3L18.64 18.79C18.98 18.99 19.42 18.89 19.62 18.55C19.83 18.21 19.72 17.76 19.37 17.56L15.5 15.26V10.72C15.5 10.32 15.18 10 14.78 10Z"
               fill="#C3CAD9"
             />
           </svg>
-
-          <h2></h2>
         </div>
-
-        {/* Время слева */}
-        {hours.map((hour) => (
-          <div key={hour} className="flex items-center justify-center h-[calc(800px/12)]">
-            <p className="text-[#6B7A99] font-bold text-xs">{hour}</p>
-          </div>
-        ))}
+        <h2 className="text-[#2B3A58] font-bold text-xl mb-4 px-3">
+          {new Date().toLocaleDateString("en-US", {
+            weekday: "long",
+            day: "numeric",
+          })}
+        </h2>
       </div>
 
-      {/* Правая часть календаря */}
-      <div className="right flex-1 relative h-[800px] border-l border-r border-gray-200">
-        {/* Сетка времени */}
-        {hours.map((hour) => (
-          <div
-            key={hour}
-            className="h-[calc(100%/12)] border-b border-gray-100 text-xs pl-2 flex items-start"
-          />
-        ))}
+      <table className="w-full border-collapse border-right border-[#F5F6F7]">
+        <tbody>
+          {hours.map((hour) => (
+            <tr key={hour} className="border-b border-[#F5F6F7]">
+              {/* Левая колонка (часы) */}
+              <td className="w-[60px] text-center text-xs font-bold text-[#6B7A99] border-r border-[#F5F6F7]">
+                {hour}:00
+              </td>
 
-        {/* События */}
-        {events.map((event, index) => (
-          <div
-            key={index}
-            className={`absolute left-4 right-4 border rounded-md p-1 text-xs flex flex-col max-w-[125px] w-full ${
-              event.color === "red"
-                ? "border-red-500 bg-[#FF66330D]" 
-                : event.color === "yellow"
-                ? "border-yellow-500 bg-[#F0B8150D]"
-                : "border-green-500 bg-[#29CC390D]"
-            }`}
-            style={{
-              top: `${calcTop(event.time)}%`,
-              height: "8%",
-            }}
-          >
-            <span className="font-bold text-[10px]">{event.time}</span>
-            <span>{event.title}</span>
-          </div>
-        ))}
-
-        <ReservationClient status="Will not come"/>
-      </div>
+              {/* Правая колонка (события) */}
+              <td className="p-2 h-[100px]">
+                <div className="flex gap-2 flex-wrap">
+                  {groupedEvents[hour]?.map((event, idx) => (
+                    <ReservationClient
+                      key={idx}
+                      status="Will not come"
+                      time={event.time}
+                      titleName={event.title}
+                    />
+                  ))}
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
