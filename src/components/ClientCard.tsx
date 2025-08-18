@@ -1,5 +1,5 @@
 import React from "react";
-import Btn from "./Btn";
+import Btn from "./ui/Btn";
 import { Link } from "react-router-dom";
 
 export default function ClientCard() {
@@ -38,7 +38,7 @@ export default function ClientCard() {
       </div>
 
       <div  className="btn mt-4">
-       <Btn text="Open" padding="8px 47px"/>
+       <Btn text="Open" padding="8px 47px" background="#F0B815"/>
       </div>
     </div>
   );

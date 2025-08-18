@@ -1,5 +1,6 @@
 import React from "react";
 import ReservationClient from "../../components/ReservationClient";
+import Modal from "../../components/ui/Modal";
 
 type Event = {
   time: string;
@@ -26,6 +27,8 @@ export default function ReservationDay() {
 
   return (
     <div className="p-4 max-w-6xl w-full">
+
+      <Modal/>
       <div className="flex items-start gap-[25px] ">
         <div className="svg">
           <svg
@@ -55,6 +58,7 @@ export default function ReservationDay() {
         <tbody>
           {hours.map((hour) => (
             <tr key={hour} className="border-b border-[#F5F6F7]">
+              
               {/* Левая колонка (часы) */}
               <td className="w-[60px] text-center text-xs font-bold text-[#6B7A99] border-r border-[#F5F6F7]">
                 {hour}:00

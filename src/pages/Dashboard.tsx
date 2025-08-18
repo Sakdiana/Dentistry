@@ -1,6 +1,6 @@
 import React from 'react'
 import ClientCard from '../components/ClientCard'
-import Btn from '../components/Btn'
+import Btn from '../components/ui/Btn'
 
 export default function Dashboard() {
   return (
