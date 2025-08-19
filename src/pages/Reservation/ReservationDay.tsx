@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReservationClient from "../../components/ReservationClient";
 import Modal from "../../components/ui/Modal";
 
@@ -17,7 +17,6 @@ const events: Event[] = [
 const hours = Array.from({ length: 12 }, (_, i) => 9 + i);
 
 export default function ReservationDay() {
-  // группируем события по часам
   const groupedEvents: Record<number, Event[]> = {};
   events.forEach((event) => {
     const [h] = event.time.split(":").map(Number);
@@ -25,10 +24,13 @@ export default function ReservationDay() {
     groupedEvents[h].push(event);
   });
 
+  const [selected, setSelected] = useState<Event | null>(null);
+
   return (
     <div className="p-4 max-w-6xl w-full">
-
-      <Modal/>
+      {selected && (
+        <Modal event={selected} onClose={() => setSelected(null)} />
+      )}
       <div className="flex items-start gap-[25px] ">
         <div className="svg">
           <svg
@@ -57,23 +59,22 @@ export default function ReservationDay() {
       <table className="w-full border-collapse border-right border-[#F5F6F7]">
         <tbody>
           {hours.map((hour) => (
-            <tr key={hour} className="border-b border-[#F5F6F7]">
-              
-              {/* Левая колонка (часы) */}
+            <tr onClick={()=>setSelected(event)} key={hour} className="border-b border-[#F5F6F7]">
               <td className="w-[60px] text-center text-xs font-bold text-[#6B7A99] border-r border-[#F5F6F7]">
                 {hour}:00
               </td>
 
-              {/* Правая колонка (события) */}
               <td className="p-2 h-[100px]">
+
                 <div className="flex gap-2 flex-wrap">
                   {groupedEvents[hour]?.map((event, idx) => (
-                    <ReservationClient
-                      key={idx}
+                    <div  key={idx} >
+                      <ReservationClient
                       status="Will not come"
                       time={event.time}
                       titleName={event.title}
                     />
+                    </div>
                   ))}
                 </div>
               </td>
