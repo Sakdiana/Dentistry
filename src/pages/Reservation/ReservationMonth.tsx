@@ -1,23 +1,24 @@
 import React from "react";
+import ReservationClient from "../../components/ReservationClient";
 
 type CalendarEvent = {
   day: number; // индекс дня (0 = Monday, 6 = Sunday)
-  time: number; // час, например 10 = 10:00
+  time: string;
   title: string;
-  color: "green" | "yellow" | "red";
+  status: "Will not come" | "already arrived" | "Will come";
 };
 
 const events: CalendarEvent[] = [
-  { day: 0, time: 9, title: "The Amazing Hubble", color: "green" },
-  { day: 1, time: 11, title: "The Amazing Hubble", color: "yellow" },
-  { day: 1, time: 13, title: "The Amazing Hubble", color: "red" },
-  { day: 2, time: 15, title: "The Amazing Hubble", color: "yellow" },
-  { day: 3, time: 9, title: "The Amazing Hubble", color: "green" },
-  { day: 3, time: 13, title: "The Amazing Hubble", color: "yellow" },
-  { day: 4, time: 11, title: "The Amazing Hubble", color: "green" },
-  { day: 6, time: 11, title: "The Amazing Hubble", color: "yellow" },
-  { day: 6, time: 13, title: "The Amazing Hubble", color: "red" },
-  { day: 0, time: 17, title: "The Amazing Hubble", color: "green" },
+  { day: 0, time: "9", title: "The Amazing Hubble", status: "Will come" },
+  { day: 1, time: "11", title: "The Amazing Hubble", status: "Will come" },
+  { day: 1, time: "13", title: "The Amazing Hubble", status: "Will come" },
+  { day: 2, time: "15", title: "The Amazing Hubble", status: "Will come" },
+  { day: 3, time: "9", title: "The Amazing Hubble", status: "Will come" },
+  { day: 3, time: "13", title: "The Amazing Hubble", status: "Will come" },
+  { day: 4, time: "11", title: "The Amazing Hubble", status: "Will come" },
+  { day: 6, time: "11", title: "The Amazing Hubble", status: "Will come" },
+  { day: 6, time: "13", title: "The Amazing Hubble", status: "Will come" },
+  { day: 0, time: "17", title: "The Amazing Hubble", status: "Will come" },
 ];
 
 const days = [
@@ -75,7 +76,7 @@ export default function ReservationMonth() {
               {/* Дни */}
               {days.map((_, dayIdx) => {
                 const event = events.find(
-                  (e) => e.day === dayIdx && e.time === hour
+                  (e) => e.day === dayIdx && e.time === String(hour)
                 );
 
                 return (
@@ -84,29 +85,11 @@ export default function ReservationMonth() {
                     className="border border-[#F0F0F0] align-top relative"
                   >
                     {event && (
-                      <div
-                        className={`rounded-md p-2 text-xs font-medium flex items-center gap-2 w-[140px]`}
-                        style={{
-                          border: `2px solid ${
-                            event.color === "green"
-                              ? "#22C55E"
-                              : event.color === "yellow"
-                              ? "#FACC15"
-                              : "#EF4444"
-                          }`,
-                          backgroundColor:
-                            event.color === "green"
-                              ? "#22C55E20"
-                              : event.color === "yellow"
-                              ? "#FACC1520"
-                              : "#EF444420",
-                        }}
-                      >
-                        <span className="text-[10px] font-bold">
-                          {event.time}:00
-                        </span>
-                        <span>{event.title}</span>
-                      </div>
+                      <ReservationClient
+                        time={event.time}
+                        titleName={event.title}
+                        status={event.status}
+                      />
                     )}
                   </td>
                 );
